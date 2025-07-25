@@ -57,6 +57,13 @@ return {
                             vim.lsp.buf.signature_help()
                         end, opts) 
 
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            buffer = bufrn,
+                            callback = function()
+                                vim.lsp.buf.format({ async = false })
+                            end
+                        })
+
                     end,
                 },
                 settings = {
