@@ -56,6 +56,9 @@ return {
                         vim.keymap.set("i", "<C-h>", function()
                             vim.lsp.buf.signature_help()
                         end, opts) 
+                        vim.keymap.set("n", "<leader>vme", function()
+                            vim.cnd.RustLsp('expandMacro')
+                        end, opts)
 
                         vim.api.nvim_create_autocmd("BufWritePre", {
                             buffer = bufrn,
