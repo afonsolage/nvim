@@ -72,6 +72,25 @@ return {
                     expander_highlight = "NeoTreeExpander",
                 },
             },
+            git_status = {
+                commands = {
+                    diff_file = function(state)
+                        local node = state.tree:get_node()
+                        if node.type == "file" then
+                            vim.cmd("DiffviewOpen -- " .. vim.fn.fnameescape(node:get_id()))
+                        end
+                    end,
+                    diff_all = function()
+                        vim.cmd("DiffviewOpen")
+                    end,
+                },
+                window = {
+                    mappings = {
+                        ["gd"] = "diff_file",
+                        ["gD"] = "diff_all",
+                    },
+                },
+            },
             document_symbols = {
                 follow_cursor = true,
             },
