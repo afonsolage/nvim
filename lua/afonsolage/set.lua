@@ -32,3 +32,6 @@ vim.opt.colorcolumn = "100"
 vim.opt.fileformats = "unix"
 
 vim.o.winborder = "rounded"
+
+-- Neovim does not detect WESL shaders (Bevy 0.20+) on its own yet.
+vim.filetype.add({ extension = { wesl = "wesl" } })
