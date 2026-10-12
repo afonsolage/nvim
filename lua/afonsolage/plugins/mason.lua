@@ -15,6 +15,7 @@ return {
 				"stylua",
 				"shfmt",
 				"codelldb",
+				"wgsl-analyzer",
 			},
 		},
 		config = function(_, opts)

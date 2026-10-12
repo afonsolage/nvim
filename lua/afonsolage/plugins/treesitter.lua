@@ -21,6 +21,7 @@ local ensure_installed = {
 	"yaml",
 	"wgsl",
 	"wgsl_bevy",
+	"wesl",
 }
 
 return {
@@ -34,6 +35,20 @@ return {
 		},
 		cmd = { "TSUpdate", "TSInstall", "TSLog" },
 		config = function()
+			-- WESL is not in nvim-treesitter yet. The parser list is rebuilt on every
+			-- `TSUpdate` event, which `setup` also fires, so register it before that.
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "TSUpdate",
+				callback = function()
+					require("nvim-treesitter.parsers").wesl = {
+						install_info = {
+							url = "https://github.com/webgpu-tools/tree-sitter-wesl",
+							queries = "queries/nvim",
+						},
+					}
+				end,
+			})
+
 			require("nvim-treesitter").setup()
 
 			-- `main` has no `ensure_installed` option, so install what is missing by hand.
