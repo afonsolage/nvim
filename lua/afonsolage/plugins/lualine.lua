@@ -28,7 +28,12 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch" },
 				lualine_c = { "filename"},
-				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_x = {
+					require("afonsolage.opencode_sessions").statusline,
+					"encoding",
+					"fileformat",
+					"filetype",
+				},
 				lualine_y = {
 					{ "progress", separator = " ", padding = { left = 1, right = 0 } },
 					{ "location", padding = { left = 0, right = 1 } },
