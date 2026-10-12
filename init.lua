@@ -1,1 +1,1 @@
-require("afonsolage")
+require('afonsolage')

@@ -1,39 +1,23 @@
 return {
-	{
-		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
-		keys = {
-			{
-				-- Customize or remove this keymap to your liking
-				"<leader>cF",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				mode = { "n", "v" },
-				desc = "Format buffer",
+	"stevearc/conform.nvim",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
+	opts = {
+		formatters_by_ft = {
+			lua = { "stylua" },
+			ron = { "ronfmt" },
+		},
+		format_on_save = {
+			-- I recommend these options. See :help conform.format for details.
+			lsp_format = "fallback",
+			timeout_ms = 500,
+		},
+		formatters = {
+			ronfmt = {
+				command = "ronfmt",
+				args = "$FILENAME && rm $FILENAME.bak",
+				stdin = false,
 			},
 		},
-		-- Everything in opts will be passed to setup()
-		opts = {
-			-- Define your formatters
-			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier" } },
-			},
-			-- Set up format-on-save
-			format_on_save = { timeout_ms = 500, lsp_fallback = true },
-			-- Customize formatters
-			formatters = {
-				shfmt = {
-					prepend_args = { "-i", "2" },
-				},
-			},
-		},
-		init = function()
-			-- If you want the formatexpr, here is the place to set it
-			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-		end,
 	},
 }

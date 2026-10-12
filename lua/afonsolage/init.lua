@@ -1,3 +1,5 @@
 require("afonsolage.set")
-require("afonsolage.lazy")
+require("afonsolage.diagnostic")
 require("afonsolage.remap")
+require("afonsolage.lazy")
+require("afonsolage.lsp")

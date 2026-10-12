@@ -24,5 +24,4 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- Some commands only works <Esc>
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
--- Funny
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
+

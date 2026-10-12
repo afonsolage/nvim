@@ -14,7 +14,6 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
---vim.opt.undodir = vim.env.HOME .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -30,4 +29,6 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "100"
 
-vim.opt.fileformats = "unix,dos"
+vim.opt.fileformats = "unix"
+
+vim.o.winborder = "rounded"
